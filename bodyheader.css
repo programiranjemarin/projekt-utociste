@@ -1,0 +1,44 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(180, 211, 180);
+  color: White;
+}
+
+nav {
+  background-color: darkslategray;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.slika {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+}
+
+a {
+  text-decoration: none;
+  border: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+  border: none;
+  transition: 0.1s;
+}
+
+button,input[type="submit"]:hover{
+  background-color: rgb(215, 215, 215);
+}
+
+button,input[type="submit"]:active{
+  background-color: rgb(165, 165, 165);
+}
+

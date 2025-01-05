@@ -1,0 +1,109 @@
+/* identifikacija */
+
+.kontejner-identifikacija {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.identifikacija {
+  background-color: darkslategray;
+  width: 300px;
+  padding: 50px;
+}
+
+.identifikacija label {
+  display: block;
+  padding-bottom: 20px;
+}
+
+.identifikacija input {
+  padding: 5px;
+}
+
+/* Kraj identifikacije */
+
+/* životinja */
+.kontejner-zivotinja {
+  padding: 50px 0;
+  margin-top: 50px;
+  background-color: darkslategray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding-right: 300px;
+}
+
+.kontejner-zivotinja .slika-zivotinje {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+}
+
+.kontejner-zivotinja .slika-zivotinje img {
+  width: 100%;
+  height: 100%;
+}
+
+.kontejner-zivotinja .ime-id-zivotinje {
+  font-size: 18px;
+}
+
+.kontejner-zivotinja .ime-id-zivotinje p {
+  padding-bottom: 20px;
+}
+
+.kontejner-zivotinja .ime-id-zivotinje input {
+  border: none;
+  border-radius: 5px;
+  padding: 9px;
+  transition: 0.15s;
+  cursor: pointer;
+}
+
+/* kraj životinje */
+
+/* Prethodni podaci */
+.kontejner-prethodni-podaci {
+  padding: 50px 0;
+  margin-top: 50px;
+  background-color: darkslategray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kontejner-prethodni-podaci table th {
+  border: 2px solid black;
+  padding: 5px;
+}
+
+.kontejner-prethodni-podaci td {
+  text-align: center;
+  max-width: 500px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.kontejner-prethodni-podaci .opis-pregleda {
+  text-align: justify;
+}
+
+.kontejner-prethodni-podaci form {
+  display: inline-block;
+}
+
+.kontejner-prethodni-podaci input {
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* Kraj prethodnih podataka */
+
+.izmjeniobrisi{
+    display: flex;
+    gap: 10px;
+}
+
