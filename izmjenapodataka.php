@@ -1,10 +1,19 @@
 <?php
-$id = $_GET['id'];
-$idZivotinje = $_GET['idZivotinje'];
-$datumPregleda = $_GET['datumPregleda'];
-$oibVetAmb = $_GET['oibVetAmb'];
-$iduciDatumPregleda = $_GET['iduciDatumPregleda'];
-$opisPregleda = $_GET['opisPregleda'];
+$con = mysqli_connect("localhost", "root", "", "utociste");
+session_start();
+
+if (isset($_GET['id']) && isset($_GET['idZivotinje']) && isset($_GET['datumPregleda']) &&  isset($_GET['oibVetAmb']) &&  isset($_GET['iduciDatumPregleda']) && isset($_GET['opisPregleda'])) {
+  $id = mysqli_real_escape_string($con, $_GET['id']);
+  $idZivotinje = mysqli_real_escape_string($con, $_GET['idZivotinje']);
+  $datumPregleda = mysqli_real_escape_string($con, $_GET['datumPregleda']);
+  $oibVetAmb = mysqli_real_escape_string($con, $_GET['oibVetAmb']);
+  $iduciDatumPregleda = mysqli_real_escape_string($con, $_GET['iduciDatumPregleda']);
+  $opisPregleda = mysqli_real_escape_string($con, $_GET['opisPregleda']);
+} else {
+  $_SESSION['poruka'] = "Nedostaju potrebne informacije.";
+  header("location: /zdravstvenikarton.php");
+  exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,13 +25,13 @@ $opisPregleda = $_GET['opisPregleda'];
   <title>Izmjena podataka</title>
   <link rel="stylesheet" href="bodyheader.css">
   <style>
-
-    .forma{
+    .forma {
       margin-top: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
+
     form {
       background-color: darkslategray;
       padding: 30px;

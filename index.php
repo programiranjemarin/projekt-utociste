@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <?php include "bodyheader.php";?>
+  <?php include "bodyheader.php" ?>
 
   <div class="kontejner-funkcije">
     <h3>ŽIVOTINJE</h3>
@@ -26,8 +26,8 @@
     <button>Brisanje životinje</button>
     <button>Brisanje udomitelja</button>
 
-    <a href="zdravstvenikarton.php">
-      <button>Zdravstveni kartoni</button>
+    <a href="/zdravstvenikarton.php">
+      <button>Zdravstveni karton</button>
     </a>
     <button>Crna lista</button>
   </div>

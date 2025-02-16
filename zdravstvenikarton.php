@@ -3,13 +3,22 @@ $con = mysqli_connect("localhost", "root", "", "utociste");
 session_start();
 
 if (isset($_GET["id"])) {
-  $id = $_GET["id"];
+  $id = mysqli_real_escape_string($con, $_GET["id"]);
   $sql = "SELECT * FROM zivotinja WHERE idZivotinje = $id";
-  $sql2 = "SELECT * FROM karton WHERE idZivotinje = $id";
+  $sql2 = "SELECT * FROM karton WHERE idZivotinje = $id ORDER BY id DESC";
   $result = mysqli_query($con, $sql);
   $result2 = mysqli_query($con, $sql2);
 }
 
+if (isset($_SESSION['poruka'])) {
+  $pogresanId = $_SESSION['poruka'];
+  unset($_SESSION['poruka']);
+}
+
+if (isset($_SESSION['porukaozapisu'])) {
+  $porukaozapisu = $_SESSION['porukaozapisu'];
+  unset($_SESSION['porukaozapisu']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,18 +33,7 @@ if (isset($_GET["id"])) {
 </head>
 
 <body>
-  <?php include "bodyheader.php";
-
-  if (isset($_SESSION['poruka'])) {
-    $pogresanId = $_SESSION['poruka'];
-    unset($_SESSION['poruka']);
-  }
-
-  if (isset($_SESSION['porukaozapisu'])) {
-    $porukaozapisu = $_SESSION['porukaozapisu'];
-    unset($_SESSION['porukaozapisu']);
-  }
-  ?>
+  <?php include "bodyheader.php" ?>
 
   <div class="kontejner-identifikacija">
     <div class="identifikacija">
@@ -44,9 +42,12 @@ if (isset($_GET["id"])) {
         <input type="text" name="id" required>
         <input type="submit" value="Potvrdi" style="cursor:pointer;">
       </form>
-      <?php if (isset($pogresanId)) {
+
+      <?php
+      if (isset($pogresanId)) {
         echo "<p>$pogresanId</p>";
       }
+
       if (isset($porukaozapisu)) {
         echo "<p>$porukaozapisu</p>";
       }
@@ -57,7 +58,6 @@ if (isset($_GET["id"])) {
   <?php
   if (isset($result)) {
     while ($row = mysqli_fetch_assoc($result)) {
-
   ?>
       <div class="kontejner-zivotinja">
         <div class="slika-zivotinje">
@@ -71,7 +71,6 @@ if (isset($_GET["id"])) {
             <input type="submit" value="Upiši nove podatke">
           </a>
         </div>
-
       </div>
   <?php }
   } ?>
@@ -99,7 +98,7 @@ if (isset($_GET["id"])) {
               <a href="izmjenapodataka.php?id=<?= $row2['id'] ?>&idZivotinje=<?= $row2['idZivotinje'] ?>&datumPregleda=<?= $row2['datumPregleda'] ?>&oibVetAmb=<?= $row2['oibVetAmb'] ?>&opisPregleda=<?= $row2['opisPregleda'] ?>&iduciDatumPregleda=<?= $row2['iduciDatumPregleda'] ?>">
                 <input type="submit" value="Izmjeni">
               </a>
-              <a href="izbriši.php?id=<?= $row2['id'] ?>&idZivotinje=<?= $row2['idZivotinje'] ?>">
+              <a href="izbrisi.php?id=<?= $row2['id'] ?>&idZivotinje=<?= $row2['idZivotinje'] ?>">
                 <input type="submit" value="Izbriši">
               </a>
             </td>
@@ -108,8 +107,6 @@ if (isset($_GET["id"])) {
       } ?>
     </table>
   </div>
-
-
 
 </body>
 
@@ -123,7 +120,6 @@ if (isset($result)) {
 if (isset($result2)) {
   mysqli_free_result($result2);
 }
-
 mysqli_close($con);
 
 ?>

@@ -1,5 +1,6 @@
 <?php
-$idzivotinje = $_GET['id'];
+$con = mysqli_connect("localhost", "root", "", "utociste");
+$idzivotinje = mysqli_real_escape_string($con, $_GET['id']);
 ?>
 
 <!DOCTYPE html>
